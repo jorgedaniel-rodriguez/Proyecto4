@@ -279,17 +279,17 @@ plt.show()
 #----------------- Parte 2--------------
 # Creación del vector de tiempo y frecuencia
 creator = []
+N = 9
+t_simulacion = np.linspace(0, N*Tc, N*mpp) 
+Tc = 1 / fc  # periodo [s]
 
-# Promedio de las N realizaciones en cada instante (cada punto en t)
-for i, aux in enumerate(senal_Tx):
-    creator.append(aux)
-     
+P = [np.mean(senal_Tx[i]) for i in range(len(t_simulacion))]
 
-P = [np.mean(senal_Tx)]
-
-print(P)
-
-
+plt.plot(t_simulacion, P, lw=4)
+plt.title('Realizaciones del proceso aleatorio $X(t)$')
+plt.xlabel('$t$')
+plt.ylabel('$x_i(t)$')
+plt.show()
 
 
 #-----------------Parte 3---------------
